@@ -10,7 +10,8 @@ const SignUp = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password);
+    const radio = form.radio.value;
+    console.log(name, email, password, radio);
     createUser(email, password)
       .then((result) => {
         const user = result.user;
@@ -60,26 +61,38 @@ const SignUp = () => {
             />
           </div>
           <div className="form-control">
-            <label className="label cursor-pointer">
-              <span className="label-text">Bayer</span>
-              <input
-                type="radio"
-                name="radio-10"
-                className="radio checked:bg-red-500"
-                checked
-              />
-            </label>
-          </div>
-          <div className="form-control">
-            <label className="label cursor-pointer">
-              <span className="label-text">Saller</span>
-              <input
-                type="radio"
-                name="radio-10"
-                className="radio checked:bg-blue-500"
-                checked
-              />
-            </label>
+            <div class="flex">
+              <div class="form-check form-check-inline mr-4">
+                <input
+                  class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                  type="radio"
+                  name="radio"
+                  id="inlineRadio1"
+                  value="bayer"
+                />
+                <label
+                  class="form-check-label inline-block"
+                  for="inlineRadio10"
+                >
+                  Bayer
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                  type="radio"
+                  name="radio"
+                  id="inlineRadio2"
+                  value="seller"
+                />
+                <label
+                  class="form-check-label inline-block"
+                  for="inlineRadio20"
+                >
+                  Saller
+                </label>
+              </div>
+            </div>
           </div>
 
           <input
