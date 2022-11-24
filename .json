@@ -1,0 +1,30 @@
+[
+  {
+    "categoryId" : "01",
+    "img": "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06251847.png",
+    "category_name": "hp",
+    "location": "Dhaka",
+    "selling_price": 20000,
+    "originial_price": 40000,
+    "used": "1 year",
+    "time": "12 november"
+  },
+  {"categoryId" : "02",
+    "img": "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06251847.png",
+    "category_name": "dell",
+    "location": "Dhaka",
+    "selling_price": 29000,
+    "originial_price": 50000,
+    "used": "2 years",
+    "time": "2 november"
+  },
+  {"categoryId" : "03",
+    "img": "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06251847.png",
+    "category_name": "asus",
+    "location": "Dhaka",
+    "selling_price": 20000,
+    "originial_price": 40000,
+    "used": "1 year",
+    "time": "3 november"
+  }
+]
