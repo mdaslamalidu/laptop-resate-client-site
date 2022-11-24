@@ -8,6 +8,7 @@ import Allsellers from "../pages/Dashboard/AllSellers/Allsellers";
 import MyOrder from "../pages/Dashboard/MyOrder/MyOrder";
 import Welcome from "../pages/Dashboard/Welcome/Welcome";
 import Home from "../pages/Home/Home/Home";
+import Login from "../pages/Login/Login";
 import ErrorPage from "../pages/shared/ErrorPage/ErrorPage";
 import SignUp from "../pages/SignUp/SignUp";
 
@@ -24,6 +25,10 @@ export const routes = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp></SignUp>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
       },
       {
         path: "/category/:id",

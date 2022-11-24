@@ -10,6 +10,7 @@ const Navbar = () => {
         <Link to="/reviews">Reviews</Link>
         <Link to="/contact">Contact Us</Link>
         <Link to="/signup">Sign Up</Link>
+        <Link to="/login">Log In</Link>
         <Link to="/dashboard">Dashboard</Link>
       </li>
     </React.Fragment>

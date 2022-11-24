@@ -2,16 +2,15 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 
-const SignUp = () => {
-  const { createUser } = useContext(AuthContext);
+const Login = () => {
+  const { signIn } = useContext(AuthContext);
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password);
-    createUser(email, password)
+    signIn(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
@@ -26,17 +25,6 @@ const SignUp = () => {
       <div className="w-96 p-7">
         <h2 className="text-xl text-center">SignUp</h2>
         <form onSubmit={handleSubmit}>
-          <div className="form-control w-full my-2">
-            <label className="label">
-              <span className="label-text">Name</span>
-            </label>{" "}
-            <input
-              className="input input-bordered w-full"
-              name="name"
-              type="text"
-              placeholder="Name"
-            />
-          </div>
           <div className="form-control w-full my-2">
             <label className="label">
               <span className="label-text">Email</span>
@@ -103,4 +91,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Login;
