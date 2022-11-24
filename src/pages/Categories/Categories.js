@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:5000/categories")
@@ -12,6 +13,8 @@ const Categories = () => {
         setCategories(data);
       });
   }, []);
+
+  navigate({ state: categories });
 
   return (
     <div>
