@@ -9,6 +9,8 @@ const Navbar = () => {
         <Link to="/appoinment">Appoinment</Link>
         <Link to="/reviews">Reviews</Link>
         <Link to="/contact">Contact Us</Link>
+        <Link to="/signup">Sign Up</Link>
+        <Link to="/dashboard">Dashboard</Link>
       </li>
     </React.Fragment>
   );
