@@ -16,6 +16,30 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        saveuserToDb(name, email, radio);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const saveuserToDb = (name, email, radio) => {
+    const currentUser = {
+      name,
+      email,
+      role: radio,
+    };
+
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(currentUser),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
       })
       .catch((error) => {
         console.log(error);

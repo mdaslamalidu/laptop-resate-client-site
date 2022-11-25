@@ -11,6 +11,7 @@ import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
 import ErrorPage from "../pages/shared/ErrorPage/ErrorPage";
 import SignUp from "../pages/SignUp/SignUp";
+import PrivateRoute from "./PrivateRoute";
 
 export const routes = createBrowserRouter([
   {
@@ -32,7 +33,11 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/category/:id",
-        element: <Category></Category>,
+        element: (
+          <PrivateRoute>
+            <Category></Category>
+          </PrivateRoute>
+        ),
       },
     ],
   },

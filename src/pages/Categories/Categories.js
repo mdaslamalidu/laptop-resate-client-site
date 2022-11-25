@@ -15,12 +15,17 @@ const Categories = () => {
 
   return (
     <div>
-      <h2>Categories</h2>
-      {categories.map((c) => (
-        <Link to={`category/${c.categoryId}`}>
-          <h3>{c.category_name}</h3>
-        </Link>
-      ))}
+      <h2 className="text-2xl text-center font-bold">Categories</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        {categories.map((c) => (
+          <div className="text-center">
+            <Link to={`/category/${c.categoryId}`}>
+              <img src={c.img} alt="" />
+              <h2>{c.category_name} Laptop</h2>
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
