@@ -1,9 +1,20 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const [loginEmail, setLoginEmail] = useState("");
+  const [token] = useToken(loginEmail);
+
+  if (token) {
+    navigate(from, { replace: true });
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -14,6 +25,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        setLoginEmail(email);
       })
       .catch((error) => {
         console.log(error);
@@ -89,9 +101,9 @@ const Login = () => {
           />
         </form>
         <p>
-          Already Have an account?
-          <Link className="text-primary" to="/login">
-            Log In
+          Are You new In This Site?
+          <Link className="text-primary" to="/signup">
+            Sign Up
           </Link>
         </p>
         <div className="divider">OR</div>

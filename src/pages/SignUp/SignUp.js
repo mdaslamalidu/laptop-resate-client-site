@@ -1,9 +1,18 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
+import useToken from "../../hooks/useToken";
 
 const SignUp = () => {
   const { createUser, updateUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
+  const [token] = useToken(createdUserEmail);
+
+  if (token) {
+    navigate("/");
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -18,6 +27,7 @@ const SignUp = () => {
         console.log(user);
         updateUser(name);
         saveuserToDb(name, email, radio);
+        setCreatedUserEmail(email);
       })
       .catch((error) => {
         console.log(error);

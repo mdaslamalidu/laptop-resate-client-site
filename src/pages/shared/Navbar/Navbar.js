@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider";
 const Navbar = () => {
-  const { logout } = useContext(AuthContext);
+  const { logout, user } = useContext(AuthContext);
 
   const handleLogout = () => {
     return logout()
@@ -20,12 +20,16 @@ const Navbar = () => {
         <Link to="/appoinment">Appoinment</Link>
         <Link to="/reviews">Reviews</Link>
         <Link to="/contact">Contact Us</Link>
-        <Link to="/signup">Sign Up</Link>
-        <Link to="/login">Log In</Link>
-        <Link to="" onClick={handleLogout}>
-          Log Out
-        </Link>
-        <Link to="/dashboard">Dashboard</Link>
+        {user?.uid ? (
+          <>
+            <Link to="" onClick={handleLogout}>
+              Log Out
+            </Link>
+            <Link to="/dashboard">Dashboard</Link>
+          </>
+        ) : (
+          <Link to="/login">Log In</Link>
+        )}
       </li>
     </React.Fragment>
   );

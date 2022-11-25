@@ -1,6 +1,7 @@
 import React from "react";
 
 const ProductForm = ({ modal, setModal, c, user }) => {
+  console.log(c);
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -13,6 +14,7 @@ const ProductForm = ({ modal, setModal, c, user }) => {
       categoryPrice: c.selling_price,
       phone,
       location,
+      category_id: c._id,
     };
 
     fetch("http://localhost:5000/bookings", {
