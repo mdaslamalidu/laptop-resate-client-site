@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../../context/AuthProvider";
 
 const AddProduct = () => {
+  const { user } = useContext(AuthContext);
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -25,6 +28,7 @@ const AddProduct = () => {
     }
 
     const product = {
+      email: user?.email,
       productName: name,
       categoryId: brand,
       img: imgaeURL,
@@ -38,6 +42,7 @@ const AddProduct = () => {
       message,
       phone,
     };
+
     console.log(product);
     fetch("http://localhost:5000/product", {
       method: "POST",
@@ -49,6 +54,7 @@ const AddProduct = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        toast.success("successfully add your product");
       })
       .catch((error) => {
         console.log(error);

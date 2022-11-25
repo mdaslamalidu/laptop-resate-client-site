@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import useToken from "../../hooks/useToken";
@@ -28,9 +29,11 @@ const SignUp = () => {
         updateUser(name);
         saveuserToDb(name, email, radio);
         setCreatedUserEmail(email);
+        toast.success("Update user");
       })
       .catch((error) => {
         console.log(error);
+        toast.error(error.message);
       });
   };
 

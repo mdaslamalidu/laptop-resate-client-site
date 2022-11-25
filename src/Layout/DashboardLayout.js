@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { getAllUsers, getuser } from "../api/Users";
+import { getuser } from "../api/Users";
 import { AuthContext } from "../context/AuthProvider";
-import Navbar from "../pages/shared/Navbar/Navbar";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
