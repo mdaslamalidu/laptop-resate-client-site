@@ -48,14 +48,15 @@ const Category = () => {
         </div>
       ))}
 
-      {modal && (
-        <CategoryModal
-          setModal={setModal}
-          modal={modal}
-          category={category}
-          user={user}
-        ></CategoryModal>
-      )}
+      {modal &&
+        category.map((c) => (
+          <CategoryModal
+            setModal={setModal}
+            modal={modal}
+            c={c}
+            user={user}
+          ></CategoryModal>
+        ))}
     </div>
   );
 };

@@ -19,7 +19,6 @@ const DashboardLayout = () => {
   }, [user?.email]);
   return (
     <div>
-      <Navbar></Navbar>
       <div className="drawer drawer-mobile">
         <input
           id="dashboard-drawer"
@@ -52,9 +51,14 @@ const DashboardLayout = () => {
                 )}
 
                 {users?.role === "seller" && (
-                  <li>
-                    <Link to="/dashboard/addProduct">Add A Product</Link>
-                  </li>
+                  <>
+                    <li>
+                      <Link to="/dashboard/addProduct">Add A Product</Link>
+                    </li>
+                    <li>
+                      <Link to="/dashboard/myproducts">My Products</Link>
+                    </li>
+                  </>
                 )}
               </>
             )}
