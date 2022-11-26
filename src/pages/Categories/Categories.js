@@ -8,20 +8,21 @@ const Categories = () => {
     fetch("http://localhost:5000/categories")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setCategories(data);
       });
   }, []);
 
   return (
     <div>
-      <h2 className="text-2xl text-center font-bold">Categories</h2>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+      <h2 className="text-4xl text-center font-bold my-5 ">Categories</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-center">
         {categories.map((c) => (
-          <div className="text-center">
+          <div className="text-center shadow-lg rounded">
             <Link to={`/category/${c.categoryId}`}>
-              <img src={c.img} alt="" />
-              <h2>{c.category_name} Laptop</h2>
+              <img className="w-full" src={c.img} alt="" />
+              <h2 className="pb-4 font-bold text-xl uppercase">
+                {c.category_name} Laptop
+              </h2>
             </Link>
           </div>
         ))}

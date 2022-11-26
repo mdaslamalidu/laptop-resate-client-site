@@ -37,7 +37,7 @@ const AddProduct = () => {
       selling_price: sellingPrice,
       originial_price: bayingPrice,
       used: year,
-      time: new Date(),
+      time: new Date().toDateString(),
       condition,
       message,
       phone,

@@ -1,12 +1,9 @@
 import React from "react";
 import ProductForm from "./ProductForm";
 
-const CategoryModal = ({ user, setModal, c, modal }) => {
-  console.log(c);
+const CategoryModal = ({ user, setFilteredData, filteredData }) => {
   return (
     <div>
-      {/* The button to open modal */}
-
       {/* Put this part before </body> tag */}
       <input type="checkbox" id="my-modal" className="modal-toggle" />
       <div className="modal">
@@ -15,10 +12,9 @@ const CategoryModal = ({ user, setModal, c, modal }) => {
             Congratulations random Internet user!
           </h3>
           <ProductForm
-            modal={modal}
-            setModal={setModal}
+            setFilteredData={setFilteredData}
             user={user}
-            c={c}
+            filteredData={filteredData}
           ></ProductForm>
         </div>
       </div>

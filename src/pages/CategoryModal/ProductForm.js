@@ -1,7 +1,7 @@
 import React from "react";
 
-const ProductForm = ({ modal, setModal, c, user }) => {
-  console.log(c);
+const ProductForm = ({ filteredData, user, setFilteredData }) => {
+  console.log(filteredData);
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -10,12 +10,13 @@ const ProductForm = ({ modal, setModal, c, user }) => {
     const bookings = {
       name: user?.displayName,
       email: user?.email,
-      categoryName: c.category_name,
-      categoryPrice: c.selling_price,
+      categoryName: filteredData.category_name,
+      categoryPrice: filteredData.selling_price,
       phone,
       location,
-      category_id: c._id,
+      category_id: filteredData._id,
     };
+    console.log(bookings);
 
     fetch("http://localhost:5000/bookings", {
       method: "POST",
@@ -27,6 +28,7 @@ const ProductForm = ({ modal, setModal, c, user }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        setFilteredData(null);
       })
       .catch((error) => {
         console.log(error);
@@ -74,7 +76,7 @@ const ProductForm = ({ modal, setModal, c, user }) => {
               name="productName"
               type="text"
               placeholder="name"
-              value={c.category_name}
+              value={filteredData.category_name}
               disabled
             />
           </div>
@@ -87,7 +89,7 @@ const ProductForm = ({ modal, setModal, c, user }) => {
               name="productName"
               type="text"
               placeholder="name"
-              value={c.selling_price}
+              value={filteredData.selling_price}
               disabled
             />
           </div>
