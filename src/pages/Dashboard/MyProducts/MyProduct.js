@@ -18,7 +18,7 @@ const MyProduct = ({ product }) => {
           ) : (
             <>
               <p>Available</p>
-              <button className="btn-sm btn-primary mt-4 rounded">
+              <button className="btn-sm btn-primary mt-2 rounded">
                 Advertise
               </button>
             </>
