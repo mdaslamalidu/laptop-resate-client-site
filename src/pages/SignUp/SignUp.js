@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/AuthProvider";
 import useToken from "../../hooks/useToken";
 
 const SignUp = () => {
-  const { createUser, updateUser } = useContext(AuthContext);
+  const { createUser, updateUser, signinwithgoogle } = useContext(AuthContext);
   const navigate = useNavigate();
   const [createdUserEmail, setCreatedUserEmail] = useState("");
   const [token] = useToken(createdUserEmail);
@@ -54,6 +54,19 @@ const SignUp = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    signinwithgoogle()
+      .then((result) => {
+        const user = result.user;
+        setCreatedUserEmail(result.user.email);
+        saveuserToDb(user.displayName, user.email, "bayer");
+        console.log(result.user);
       })
       .catch((error) => {
         console.log(error);
@@ -146,7 +159,10 @@ const SignUp = () => {
           </Link>
         </p>
         <div className="divider">OR</div>
-        <button className="btn btn-outline w-full uppercase">
+        <button
+          onClick={handleGoogleSignIn}
+          className="btn btn-outline w-full uppercase"
+        >
           continue with google
         </button>
       </div>

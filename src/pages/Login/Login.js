@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import useToken from "../../hooks/useToken";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, signinwithgoogle } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -25,6 +26,44 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         setLoginEmail(email);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message);
+      });
+  };
+
+  const saveuserToDb = (name, email, radio) => {
+    const currentUser = {
+      name,
+      email,
+      role: radio,
+    };
+    console.log(currentUser);
+
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(currentUser),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    signinwithgoogle()
+      .then((result) => {
+        const user = result.user;
+        setLoginEmail(result.user.email);
+        saveuserToDb(user.displayName, user.email, "bayer");
+        console.log(result.user);
       })
       .catch((error) => {
         console.log(error);
@@ -58,44 +97,9 @@ const Login = () => {
               placeholder="Password"
             />
           </div>
-          <div className="form-control">
-            <div class="flex">
-              <div class="form-check form-check-inline mr-4">
-                <input
-                  class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                  type="radio"
-                  name="radio"
-                  id="inlineRadio1"
-                  value="bayer"
-                />
-                <label
-                  class="form-check-label inline-block"
-                  for="inlineRadio10"
-                >
-                  Bayer
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                  type="radio"
-                  name="radio"
-                  id="inlineRadio2"
-                  value="seller"
-                />
-                <label
-                  class="form-check-label inline-block"
-                  for="inlineRadio20"
-                >
-                  Saller
-                </label>
-              </div>
-            </div>
-          </div>
-
           <input
             type="submit"
-            value="Sign Up"
+            value="Sign In"
             className="btn btn-accent w-full my-2"
           />
         </form>
@@ -106,7 +110,10 @@ const Login = () => {
           </Link>
         </p>
         <div className="divider">OR</div>
-        <button className="btn btn-outline w-full uppercase">
+        <button
+          onClick={handleGoogleSignIn}
+          className="btn btn-outline w-full uppercase"
+        >
           continue with google
         </button>
       </div>
