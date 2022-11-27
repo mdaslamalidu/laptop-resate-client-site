@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { getuserByEmail } from "../../../api/Users";
 import { AuthContext } from "../../../context/AuthProvider";
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
+  const [users, setUsers] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -28,7 +30,9 @@ const AddProduct = () => {
     }
 
     const product = {
-      email: user?.email,
+      email: users?.email,
+      sellerName: users?.name,
+      verifiedStatus: users?.status ? users?.status : "notVerified",
       productName: name,
       categoryId: brand,
       img: imgaeURL,
@@ -43,7 +47,6 @@ const AddProduct = () => {
       phone,
     };
 
-    console.log(product);
     fetch("http://localhost:5000/product", {
       method: "POST",
       headers: {
@@ -60,6 +63,14 @@ const AddProduct = () => {
         console.log(error);
       });
   };
+
+  useEffect(() => {
+    getuserByEmail(user?.email).then((data) => {
+      setUsers(data);
+      console.log(data);
+    });
+  }, [user?.email]);
+
   return (
     <div>
       <h3>This is My Products</h3>

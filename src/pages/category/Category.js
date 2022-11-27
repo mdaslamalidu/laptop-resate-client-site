@@ -5,7 +5,6 @@ import CategoryModal from "../CategoryModal/CategoryModal";
 import SignleCategory from "./SignleCategory";
 
 const Category = () => {
-  const { user } = useContext(AuthContext);
   const [category, setCategory] = useState([]);
   const [filteredData, setFilteredData] = useState(null);
   const { id } = useParams();
@@ -28,7 +27,6 @@ const Category = () => {
         {category.map((singleCategory) => (
           <SignleCategory
             singleCategory={singleCategory}
-            user={user}
             handleModalData={handleModalData}
           ></SignleCategory>
         ))}
@@ -38,7 +36,6 @@ const Category = () => {
         <CategoryModal
           filteredData={filteredData}
           setFilteredData={setFilteredData}
-          user={user}
         ></CategoryModal>
       )}
     </div>

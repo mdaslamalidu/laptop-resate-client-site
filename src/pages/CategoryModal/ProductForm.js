@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 
-const ProductForm = ({ filteredData, user, setFilteredData }) => {
+const ProductForm = ({ filteredData, setFilteredData }) => {
+  const { user } = useContext(AuthContext);
   console.log(filteredData);
   const handleSubmit = (event) => {
     event.preventDefault();

@@ -1,7 +1,7 @@
 import React from "react";
 import ProductForm from "./ProductForm";
 
-const CategoryModal = ({ user, setFilteredData, filteredData }) => {
+const CategoryModal = ({ setFilteredData, filteredData }) => {
   return (
     <div>
       {/* Put this part before </body> tag */}
@@ -13,7 +13,6 @@ const CategoryModal = ({ user, setFilteredData, filteredData }) => {
           </h3>
           <ProductForm
             setFilteredData={setFilteredData}
-            user={user}
             filteredData={filteredData}
           ></ProductForm>
         </div>

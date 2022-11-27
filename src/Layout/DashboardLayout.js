@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { getuser } from "../api/Users";
+import { getuserByEmail } from "../api/Users";
 import { AuthContext } from "../context/AuthProvider";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
   const [users, setUsers] = useState("");
   useEffect(() => {
-    getuser(user?.email)
+    getuserByEmail(user?.email)
       .then((data) => {
         setUsers(data);
         console.log(data);

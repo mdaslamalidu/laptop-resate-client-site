@@ -1,4 +1,4 @@
-export const getuser = async (email) => {
+export const getuserByEmail = async (email) => {
   const url = `http://localhost:5000/users/${email}`;
 
   const response = await fetch(url);

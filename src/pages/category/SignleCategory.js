@@ -1,6 +1,6 @@
 import React from "react";
-
-const SignleCategory = ({ singleCategory, user, handleModalData }) => {
+import { CheckCircleIcon } from "@heroicons/react/24/solid";
+const SignleCategory = ({ singleCategory, handleModalData }) => {
   const {
     category_name,
     location,
@@ -11,6 +11,8 @@ const SignleCategory = ({ singleCategory, user, handleModalData }) => {
     used,
     message,
     _id,
+    sellerName,
+    verifiedStatus,
   } = singleCategory;
 
   const setDate = time.split(" ");
@@ -21,7 +23,14 @@ const SignleCategory = ({ singleCategory, user, handleModalData }) => {
           <img className="h-[340px]" src={img} alt="Shoes" />
         </figure>
         <div className="card-body">
-          <h2>Name: {user.displayName}</h2>
+          <div className="flex justify-between items-center gap-2">
+            <h2>Seller Name: {sellerName}</h2>
+            <p>
+              {verifiedStatus === "verified" && (
+                <CheckCircleIcon className="text-blue-600 h-6 w-6" />
+              )}
+            </p>
+          </div>
           <div className="flex justify-between">
             <h2 className="text-2xl font-bold">Brand: {category_name}</h2>
             <h2 className="card-title">{location}</h2>
