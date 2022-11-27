@@ -1,0 +1,15 @@
+ <div className="relative bg-gray-900 bg-opacity-75">
+        <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+          <div className="flex flex-col items-center justify-between xl:flex-row">
+            <div>
+              <h2 className="max-w-lg mb-6 font-sans lg:text-6xl font-bold tracking-tight text-white text-4xl sm:leading-none">
+                Laptop Resal Market <br />
+                To Everyone <br />
+                <span className="text-teal-400 text-4">
+                  Find Out Your Best Product
+                </span>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>

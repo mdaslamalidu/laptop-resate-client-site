@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="">
-      <div className="container flex flex-col p-4 mx-auto md:p-8 lg:flex-row ">
-        <ul className="self-center py-6 space-y-4 text-center sm:flex sm:space-y-0 sm:justify-around sm:space-x-4 lg:flex-1 lg:justify-start">
+    <footer className="bg-slate-200">
+      <div className="container flex flex-col lg:flex-row pt-5">
+        <ul className="self-center py-2 space-y-4 text-center sm:flex sm:space-y-0 sm:justify-around sm:space-x-4 lg:flex-1 lg:justify-start">
           <Link to="/">
             <li className="text-3xl font-bold">Laptop Resal</li>
           </Link>
@@ -75,7 +75,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <h2 className="text-center text-sm font-bold">
+      <h2 className="text-center text-base font-bold pb-4">
         All Right Reserved By Product Resal Authority
       </h2>
     </footer>
