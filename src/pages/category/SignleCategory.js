@@ -64,6 +64,7 @@ const SignleCategory = ({
               onClick={() => handleModalData(_id)}
               htmlFor="my-modal"
               className="btn btn-primary"
+              disabled={paid}
             >
               {paid ? "Already Booked" : "Book Now"}
             </label>
