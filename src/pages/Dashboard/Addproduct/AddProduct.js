@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { getuserByEmail } from "../../../api/Users";
 import { AuthContext } from "../../../context/AuthProvider";
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
   const [users, setUsers] = useState("");
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -19,6 +21,7 @@ const AddProduct = () => {
     const message = form.message.value;
     const year = form.year.value;
     const condition = form.condition.value;
+    const used = form.used.value;
     let categoryName = "";
 
     if (brand === "01") {
@@ -40,11 +43,12 @@ const AddProduct = () => {
       location,
       selling_price: sellingPrice,
       originial_price: bayingPrice,
-      used: year,
+      parchage: year,
       time: new Date().toDateString(),
       condition,
       message,
       phone,
+      used,
     };
 
     fetch("http://localhost:5000/product", {
@@ -58,6 +62,7 @@ const AddProduct = () => {
       .then((data) => {
         console.log(data);
         toast.success("successfully add your product");
+        navigate("/dashboard/myproducts");
       })
       .catch((error) => {
         console.log(error);
@@ -72,9 +77,9 @@ const AddProduct = () => {
   }, [user?.email]);
 
   return (
-    <div>
-      <h3>This is My Products</h3>
-      <div className="w-1/2">
+    <div className="my-8">
+      <h3 className="text-xl font-bold text-center">Add Products</h3>
+      <div className="w-1/2 mx-auto bg-slate-400 p-5 rounded">
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-2 gap-5">
             <div className="form-control my-1">
@@ -163,6 +168,17 @@ const AddProduct = () => {
             </div>
             <div className="form-control my-1">
               <label className="label">
+                <span className="label-text">Used</span>
+              </label>{" "}
+              <input
+                className="input input-bordered w-full"
+                name="used"
+                type="text"
+                placeholder="write 6 months or 1 year"
+              />
+            </div>
+            <div className="form-control my-1">
+              <label className="label">
                 <span className="label-text">Parchase Year</span>
               </label>{" "}
               <input
@@ -195,7 +211,7 @@ const AddProduct = () => {
             </div>
           </div>
 
-          <input className="btn" type="submit" value="Submit" />
+          <input className="btn my-5" type="submit" value="Submit" />
         </form>
       </div>
     </div>

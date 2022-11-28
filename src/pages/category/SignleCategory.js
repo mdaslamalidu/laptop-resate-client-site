@@ -1,6 +1,10 @@
 import React from "react";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
-const SignleCategory = ({ singleCategory, handleModalData }) => {
+const SignleCategory = ({
+  singleCategory,
+  handleModalData,
+  handleReportItem,
+}) => {
   const {
     category_name,
     location,
@@ -14,6 +18,7 @@ const SignleCategory = ({ singleCategory, handleModalData }) => {
     sellerName,
     verifiedStatus,
   } = singleCategory;
+  console.log(singleCategory);
 
   const setDate = time.split(" ");
   return (
@@ -40,15 +45,20 @@ const SignleCategory = ({ singleCategory, handleModalData }) => {
             <h2 className="">Original Price: {originial_price}</h2>
           </div>
           <div className="flex justify-between">
-            <h2 className="card-title">
-              Used: {new Date().getFullYear() - parseFloat(used)} year
-            </h2>
+            <h2 className="card-title">Used: {used}</h2>
             <h2 className="card-title">
               Post: {setDate[1]} {setDate[2]}
             </h2>
           </div>
           <p>{message}</p>
-          <div className="card-actions justify-end">
+          <div className="card-actions justify-end gap-3">
+            <label
+              onClick={() => handleReportItem(_id)}
+              htmlFor="my-modal"
+              className="btn btn-primary"
+            >
+              Report
+            </label>
             <label
               onClick={() => handleModalData(_id)}
               htmlFor="my-modal"

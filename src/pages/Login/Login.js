@@ -3,9 +3,11 @@ import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import useToken from "../../hooks/useToken";
+import SmallSpinner from "../shared/Spinner/SmallSpinner";
 
 const Login = () => {
-  const { signIn, signinwithgoogle } = useContext(AuthContext);
+  const { signIn, signinwithgoogle, loading, setLoading } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -30,6 +32,7 @@ const Login = () => {
       .catch((error) => {
         console.log(error);
         toast.error(error.message);
+        setLoading(false);
       });
   };
 
@@ -73,7 +76,7 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center">
       <div className="w-96 p-7">
-        <h2 className="text-xl text-center">SignUp</h2>
+        <h2 className="text-xl text-center">Sign In</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-control w-full my-2">
             <label className="label">
@@ -97,11 +100,9 @@ const Login = () => {
               placeholder="Password"
             />
           </div>
-          <input
-            type="submit"
-            value="Sign In"
-            className="btn btn-accent w-full my-2"
-          />
+          <button type="submit" className="btn btn-accent w-full my-2">
+            {loading ? <SmallSpinner></SmallSpinner> : "Sing In"}
+          </button>
         </form>
         <p>
           Are You new In This Site?

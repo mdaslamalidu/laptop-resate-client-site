@@ -7,6 +7,7 @@ const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
   const [users, setUsers] = useState("");
   useEffect(() => {
+    console.log(user?.email);
     getuserByEmail(user?.email)
       .then((data) => {
         setUsers(data);
@@ -48,6 +49,9 @@ const DashboardLayout = () => {
                     </li>
                     <li>
                       <Link to="/dashboard/allSellers">All Sellers</Link>
+                    </li>
+                    <li>
+                      <Link to="/dashboard/reported">All Reported Items</Link>
                     </li>
                   </>
                 )}

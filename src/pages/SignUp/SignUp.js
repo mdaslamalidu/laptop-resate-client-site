@@ -3,9 +3,11 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import useToken from "../../hooks/useToken";
+import SmallSpinner from "../shared/Spinner/SmallSpinner";
 
 const SignUp = () => {
-  const { createUser, updateUser, signinwithgoogle } = useContext(AuthContext);
+  const { createUser, updateUser, signinwithgoogle, loading, setLoading } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const [createdUserEmail, setCreatedUserEmail] = useState("");
   const [token] = useToken(createdUserEmail);
@@ -34,6 +36,7 @@ const SignUp = () => {
       .catch((error) => {
         console.log(error);
         toast.error(error.message);
+        setLoading(false);
       });
   };
 
@@ -54,9 +57,11 @@ const SignUp = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
+        setLoading(false);
       });
   };
 
@@ -70,6 +75,7 @@ const SignUp = () => {
       })
       .catch((error) => {
         console.log(error);
+        setLoading(false);
       });
   };
 
@@ -145,12 +151,9 @@ const SignUp = () => {
               </div>
             </div>
           </div>
-
-          <input
-            type="submit"
-            value="Sign Up"
-            className="btn btn-accent w-full my-2"
-          />
+          <button type="submit" className="btn btn-accent w-full my-2">
+            {loading ? <SmallSpinner></SmallSpinner> : "Sign Up"}
+          </button>
         </form>
         <p>
           Already Have an account?

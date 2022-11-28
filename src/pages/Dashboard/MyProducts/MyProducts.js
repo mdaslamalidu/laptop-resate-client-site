@@ -24,7 +24,9 @@ const MyProducts = () => {
   }, [user?.email]);
   return (
     <div>
-      <h3>This is My Products {products.length}</h3>
+      <h3 className="text-xl font-bold text-center">
+        This is My Products {products.length}
+      </h3>
       {products.map((product) => (
         <MyProduct key={product._id} product={product}></MyProduct>
       ))}

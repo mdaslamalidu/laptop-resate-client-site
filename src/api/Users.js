@@ -1,9 +1,15 @@
 export const getuserByEmail = async (email) => {
+  console.log(email);
   const url = `http://localhost:5000/users/${email}`;
 
-  const response = await fetch(url);
+  const response = await fetch(url, {
+    headers: {
+      authorizations: `bearer ${localStorage.getItem("accessToken")}`,
+    },
+  });
 
   const data = await response.json();
+
   return data;
 };
 

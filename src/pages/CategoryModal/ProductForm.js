@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../context/AuthProvider";
 
 const ProductForm = ({ filteredData, setFilteredData }) => {
@@ -17,8 +18,8 @@ const ProductForm = ({ filteredData, setFilteredData }) => {
       phone,
       location,
       category_id: filteredData._id,
+      img: filteredData.img,
     };
-    console.log(bookings);
 
     fetch("http://localhost:5000/bookings", {
       method: "POST",
@@ -31,6 +32,7 @@ const ProductForm = ({ filteredData, setFilteredData }) => {
       .then((data) => {
         console.log(data);
         setFilteredData(null);
+        toast.success("Item is Booked");
       })
       .catch((error) => {
         console.log(error);

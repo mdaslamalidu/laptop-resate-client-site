@@ -14,9 +14,7 @@ const AdvertiseItems = () => {
     <div className="my-12">
       {advertise.length > 0 && (
         <>
-          <h3 className="text-4xl font-bold text-center">
-            Advertise Item {advertise.length}
-          </h3>
+          <h3 className="text-4xl font-bold text-center">Advertise Item</h3>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-center">
             {advertise.map((add) => (
               <div className="text-center shadow-lg rounded">

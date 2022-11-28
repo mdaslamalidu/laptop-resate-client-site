@@ -15,20 +15,25 @@ const Navbar = () => {
   const menuItems = (
     <React.Fragment>
       <li>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/appoinment">Appoinment</Link>
-        <Link to="/reviews">Reviews</Link>
-        <Link to="/contact">Contact Us</Link>
+        <Link to="/" className="font-semibold">
+          Home
+        </Link>
+        <Link to="/blog" className="font-semibold">
+          Blog
+        </Link>
         {user?.uid ? (
           <>
-            <Link to="" onClick={handleLogout}>
+            <Link to="" onClick={handleLogout} className="font-semibold">
               Log Out
             </Link>
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/dashboard" className="font-semibold">
+              Dashboard
+            </Link>
           </>
         ) : (
-          <Link to="/login">Log In</Link>
+          <Link to="/login" className="font-semibold">
+            Log In
+          </Link>
         )}
       </li>
     </React.Fragment>
@@ -37,7 +42,7 @@ const Navbar = () => {
     <div className="navbar flex justify-between">
       <div className="navbar-start">
         <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+          <label tabIndex={0} className="btn btn-primary lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -60,8 +65,8 @@ const Navbar = () => {
             {menuItems}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
-          Doctors Portal
+        <Link to="/" className="btn btn-ghost normal-case text-2xl font-bold">
+          Laptop Resale
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
