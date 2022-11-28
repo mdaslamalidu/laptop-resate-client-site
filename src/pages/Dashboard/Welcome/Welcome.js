@@ -7,11 +7,9 @@ const Welcome = () => {
   const [users, setUsers] = useState("");
 
   useEffect(() => {
-    console.log(user?.email);
     getuserByEmail(user?.email)
       .then((data) => {
         setUsers(data);
-        console.log(data);
       })
       .catch((error) => {
         console.log(error);

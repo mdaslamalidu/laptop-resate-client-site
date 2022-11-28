@@ -17,6 +17,7 @@ const SignleCategory = ({
     _id,
     sellerName,
     verifiedStatus,
+    paid,
   } = singleCategory;
   console.log(singleCategory);
 
@@ -64,7 +65,7 @@ const SignleCategory = ({
               htmlFor="my-modal"
               className="btn btn-primary"
             >
-              Book Now
+              {paid ? "Already Booked" : "Book Now"}
             </label>
           </div>
         </div>

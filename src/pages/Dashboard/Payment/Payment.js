@@ -5,15 +5,13 @@ import { useLoaderData } from "react-router-dom";
 import CheckOutPage from "./CheckOutPage";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
-console.log(stripePromise);
 
 const Payment = () => {
   const bookings = useLoaderData();
-  console.log(bookings);
   return (
     <div>
-      <h2>Payment</h2>
-      <div className="w-96 my-8">
+      <h2 className="text-xl font-bold text-center">Confirm Payment</h2>
+      <div className="w-96 my-8 mx-auto">
         <Elements stripe={stripePromise}>
           <CheckOutPage bookings={bookings}></CheckOutPage>
         </Elements>

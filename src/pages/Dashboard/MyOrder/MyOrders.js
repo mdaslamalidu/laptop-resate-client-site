@@ -6,7 +6,7 @@ const MyOrders = ({ order }) => {
   const { img, categoryName, categoryPrice, paid, _id } = order;
   return (
     <div>
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col md:flex-row sm:gap-5 justify-between items-center">
         <div className="avatar">
           <div className="w-24 rounded-full">
             <img src={img} alt="" />

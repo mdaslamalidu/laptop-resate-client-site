@@ -31,7 +31,7 @@ const MyProduct = ({ product }) => {
   };
 
   const advertiseItem = (advertiseProduct) => {
-    fetch("http://localhost:5000/advertise", {
+    fetch("https://laptop-resale-server-site.vercel.app/advertise", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -47,7 +47,7 @@ const MyProduct = ({ product }) => {
 
   return (
     <div className="bg-slate-200 rounded my-5 p-4">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col md:flex-row sm:gap-5 justify-between items-center">
         <div className="avatar">
           <div className="w-24 rounded-full">
             <img src={img} alt="" />

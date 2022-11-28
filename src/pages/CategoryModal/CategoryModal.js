@@ -5,6 +5,8 @@ const CategoryModal = ({ setFilteredData, filteredData }) => {
   return (
     <div>
       {/* Put this part before </body> tag */}
+      {/* The button to open modal */}
+
       <input type="checkbox" id="my-modal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box">

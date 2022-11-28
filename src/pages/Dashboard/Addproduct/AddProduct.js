@@ -51,7 +51,7 @@ const AddProduct = () => {
       used,
     };
 
-    fetch("http://localhost:5000/product", {
+    fetch("https://laptop-resale-server-site.vercel.app/product", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -72,24 +72,21 @@ const AddProduct = () => {
   useEffect(() => {
     getuserByEmail(user?.email).then((data) => {
       setUsers(data);
-      console.log(data);
     });
   }, [user?.email]);
 
   return (
     <div className="my-8">
       <h3 className="text-xl font-bold text-center">Add Products</h3>
-      <div className="w-1/2 mx-auto bg-slate-400 p-5 rounded">
+      <div className="w-full md:w-1/2 mx-auto bg-slate-400 p-5 rounded">
         <form onSubmit={handleSubmit}>
-          <div className="grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="form-control my-1">
               <label className="label">
                 <span className="label-text">Product Brand</span>
               </label>{" "}
               <select name="brand" className="input input-bordered w-full">
-                <option disabled selected>
-                  Select Brand
-                </option>
+                <option>Select Brand</option>
                 <option value={"01"}>HP</option>
                 <option value={"02"}>DELL</option>
                 <option value={"03"}>ASUS</option>
@@ -100,9 +97,7 @@ const AddProduct = () => {
                 <span className="label-text">Product Condition</span>
               </label>{" "}
               <select name="condition" className="input input-bordered w-full">
-                <option disabled selected>
-                  Select Brand
-                </option>
+                <option>Select Brand</option>
                 <option value={"Good"}>Good</option>
                 <option value={"Excellent"}>Excellent</option>
                 <option value={"Fair"}>Fair</option>

@@ -2,16 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { getuserByEmail } from "../api/Users";
 import { AuthContext } from "../context/AuthProvider";
+import Navbar from "../pages/shared/Navbar/Navbar";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
   const [users, setUsers] = useState("");
   useEffect(() => {
-    console.log(user?.email);
     getuserByEmail(user?.email)
       .then((data) => {
         setUsers(data);
-        console.log(data);
       })
       .catch((error) => {
         console.log(error);
@@ -19,6 +18,7 @@ const DashboardLayout = () => {
   }, [user?.email]);
   return (
     <div>
+      <Navbar></Navbar>
       <div className="drawer drawer-mobile">
         <input
           id="dashboard-drawer"
@@ -28,12 +28,9 @@ const DashboardLayout = () => {
         <div className="drawer-content">
           <Outlet></Outlet>
         </div>
-        <div className="drawer-side">
-          <Link to="/">
-            <h2>Home</h2>
-          </Link>
+        <div className="drawer-side ">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+          <ul className="menu p-4 w-80 text-base-content bg-slate-200">
             {users?.role && (
               <>
                 {users?.role === "bayer" && (

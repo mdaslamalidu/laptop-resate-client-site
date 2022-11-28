@@ -4,7 +4,6 @@ import { AuthContext } from "../../context/AuthProvider";
 
 const ProductForm = ({ filteredData, setFilteredData }) => {
   const { user } = useContext(AuthContext);
-  console.log(filteredData);
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -21,18 +20,22 @@ const ProductForm = ({ filteredData, setFilteredData }) => {
       img: filteredData.img,
     };
 
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://laptop-resale-server-site.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorizations: `bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(bookings),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        setFilteredData(null);
-        toast.success("Item is Booked");
+        if (data.acknowledged) {
+          setFilteredData(null);
+          toast.success("Item is Booked");
+        } else {
+          toast.error(data.message);
+        }
       })
       .catch((error) => {
         console.log(error);

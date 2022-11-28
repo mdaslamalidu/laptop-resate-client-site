@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import SmallSpinner from "../../shared/Spinner/SmallSpinner";
 
 const CheckOutPage = ({ bookings }) => {
   const [clientSecret, setClientSecret] = useState("");
@@ -9,22 +10,27 @@ const CheckOutPage = ({ bookings }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
-  const { categoryPrice, name, email, _id } = bookings;
+  const { categoryPrice, name, email, _id, category_id } = bookings;
+  const [isLoading, setIsLoading] = useState(false);
+  console.log(bookings);
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:5000/create-payment-intent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ categoryPrice }),
-    })
+    fetch(
+      "https://laptop-resale-server-site.vercel.app/create-payment-intent",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ categoryPrice }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
   }, [categoryPrice]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setIsLoading(true);
     if (!stripe && !elements) {
       return;
     }
@@ -43,6 +49,7 @@ const CheckOutPage = ({ bookings }) => {
     if (error) {
       console.log(error);
       setCardError(error.message);
+      setIsLoading(false);
     } else {
       setCardError("");
     }
@@ -68,9 +75,10 @@ const CheckOutPage = ({ bookings }) => {
         email,
         transactionId: paymentIntent.id,
         bookingId: _id,
+        productId: category_id,
       };
 
-      fetch("http://localhost:5000/payments", {
+      fetch("https://laptop-resale-server-site.vercel.app/payments", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -81,10 +89,14 @@ const CheckOutPage = ({ bookings }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
-            console.log(data);
+            setIsLoading(false);
             setSuccess("congrets! your payment completed");
             setTransactionId(paymentIntent.id);
           }
+        })
+        .catch((error) => {
+          console.log(error);
+          setIsLoading(false);
         });
     }
     setProcessing(false);
@@ -115,7 +127,7 @@ const CheckOutPage = ({ bookings }) => {
           className="btn btn-sm btn-primary mt-4"
           disabled={!stripe || !clientSecret || processing}
         >
-          Pay
+          {isLoading ? <SmallSpinner></SmallSpinner> : "Pay"}
         </button>
       </form>
       <p className="text-xl text-red-500">{cardError}</p>

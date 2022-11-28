@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { getAllUsers, makeVerify } from "../../../api/Users";
+import Loading from "../../shared/Spinner/Loading";
 import AllSeller from "./AllSeller";
 
 const Allsellers = () => {
   const [sellers, setSellers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/users/${id}`, {
+    fetch(`https://laptop-resale-server-site.vercel.app/users/${id}`, {
       method: "DELETE",
     })
       .then(() => {
@@ -17,17 +19,21 @@ const Allsellers = () => {
 
   const makeUserVerify = (user) => {
     makeVerify(user).then((data) => {
-      console.log(data);
       getSellerData();
     });
   };
 
   const getSellerData = () => {
-    getAllUsers().then((data) => {
-      console.log(data);
-      const filterdSeller = data.filter((seller) => seller.role === "seller");
-      setSellers(filterdSeller);
-    });
+    getAllUsers()
+      .then((data) => {
+        const filterdSeller = data.filter((seller) => seller.role === "seller");
+        setSellers(filterdSeller);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -37,13 +43,20 @@ const Allsellers = () => {
   return (
     <div>
       <h3>Sellers</h3>
-      {sellers.map((seller) => (
-        <AllSeller
-          seller={seller}
-          handleDelete={handleDelete}
-          makeUserVerify={makeUserVerify}
-        ></AllSeller>
-      ))}
+      {loading ? (
+        <Loading></Loading>
+      ) : (
+        <>
+          {sellers.map((seller) => (
+            <AllSeller
+              key={seller._id}
+              seller={seller}
+              handleDelete={handleDelete}
+              makeUserVerify={makeUserVerify}
+            ></AllSeller>
+          ))}
+        </>
+      )}
     </div>
   );
 };

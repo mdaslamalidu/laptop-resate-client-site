@@ -26,7 +26,7 @@ const Category = () => {
       name: reportedItem.sellerName,
     };
 
-    fetch("http://localhost:5000/report", {
+    fetch("https://laptop-resale-server-site.vercel.app/report", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -44,18 +44,20 @@ const Category = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/category/${id}`)
+    fetch(`https://laptop-resale-server-site.vercel.app/category/${id}`)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setCategory(data);
       });
   }, [id]);
 
   return (
-    <div>
-      <div className="grid lg:grid-cols-3 grid-cols-1 gap-4">
+    <div className="my-24">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
         {category.map((singleCategory) => (
           <SignleCategory
+            key={singleCategory._id}
             singleCategory={singleCategory}
             handleModalData={handleModalData}
             handleReportItem={handleReportItem}

@@ -44,7 +44,7 @@ const Login = () => {
     };
     console.log(currentUser);
 
-    fetch("http://localhost:5000/users", {
+    fetch("https://laptop-resale-server-site.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
