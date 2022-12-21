@@ -1,6 +1,6 @@
 export const Banner = () => {
   return (
-    <div className="relative">
+    <div className="relative w-5/6 m-auto">
       <img
         src="http://www.polymagnet.com/media/laptop-banner.jpg"
         className="absolute inset-0 object-cover w-full h-full"

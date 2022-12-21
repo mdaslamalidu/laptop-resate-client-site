@@ -53,7 +53,7 @@ const Category = () => {
   }, [id]);
 
   return (
-    <div className="my-24">
+    <div className="w-5/6 m-auto">
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
         {category.map((singleCategory) => (
           <SignleCategory
