@@ -6,7 +6,7 @@ export const Banner = () => {
         className="absolute inset-0 object-cover w-full h-full"
         alt=""
       />
-      <div className="relative bg-gray-900 bg-opacity-75 ">
+      <div className="relative  bg-opacity-75 ">
         <div>
           <div className="flex flex-col items-center justify-center  h-[500px]">
             <h2 className="text-5xl font-bold text-white text-center">

@@ -16,13 +16,13 @@ const Categories = () => {
   }, []);
 
   return (
-    <div className="bg-slate-100 w-5/6 m-auto my-24">
+    <div className="w-5/6 m-auto my-24">
       <h2 className="text-2xl text-left font-bold py-12 ml-5">
         Browser by Categories
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-center">
         {categories.map((c) => (
-          <div className="text-center shadow-lg rounded bg-slate-600 text-white">
+          <div className="text-center shadow-lg rounded text-white">
             <Link to={`/category/${c.categoryId}`}>
               <img className="w-full p-12 rounded-lg" src={c.img} alt="" />
               <h2 className="pb-4 font-bold text-xl uppercase">
