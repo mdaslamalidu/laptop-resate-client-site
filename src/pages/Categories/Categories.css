@@ -1,0 +1,26 @@
+.swiper-container {
+  width: 100%;
+  padding-top: 3rem;
+  background-color: #0a1929;
+}
+
+.swiperLInk {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 8px;
+}
+
+.swiperLInk a {
+  background-color: #256;
+  padding: 3px 5px;
+  border-radius: 3px;
+}
+
+.swiper-slide {
+  display: grid;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  width: 350px;
+  background-color: #163a9b;
+  border-radius: 5px;
+}
