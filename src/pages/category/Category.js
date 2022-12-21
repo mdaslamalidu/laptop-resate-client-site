@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import CategoryModal from "../CategoryModal/CategoryModal";
+import Loading from "../shared/Spinner/Loading";
 import SignleCategory from "./SignleCategory";
 
 const Category = () => {
@@ -52,26 +53,30 @@ const Category = () => {
       });
   }, [id]);
 
-  return (
-    <div className="w-5/6 m-auto">
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
-        {category.map((singleCategory) => (
-          <SignleCategory
-            key={singleCategory._id}
-            singleCategory={singleCategory}
-            handleModalData={handleModalData}
-            handleReportItem={handleReportItem}
-          ></SignleCategory>
-        ))}
-      </div>
+  return category.length === 0 ? (
+    <Loading></Loading>
+  ) : (
+    <>
+      <div className="w-5/6 m-auto">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
+          {category.map((singleCategory) => (
+            <SignleCategory
+              key={singleCategory._id}
+              singleCategory={singleCategory}
+              handleModalData={handleModalData}
+              handleReportItem={handleReportItem}
+            ></SignleCategory>
+          ))}
+        </div>
 
-      {filteredData && (
-        <CategoryModal
-          filteredData={filteredData}
-          setFilteredData={setFilteredData}
-        ></CategoryModal>
-      )}
-    </div>
+        {filteredData && (
+          <CategoryModal
+            filteredData={filteredData}
+            setFilteredData={setFilteredData}
+          ></CategoryModal>
+        )}
+      </div>
+    </>
   );
 };
 
