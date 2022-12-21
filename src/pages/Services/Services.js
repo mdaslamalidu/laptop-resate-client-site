@@ -4,8 +4,8 @@ const Services = () => {
   return (
     <div className="w-5/6 m-auto">
       <section className="md:m-8 dark:text-gray-100">
-        <div className="container mx-auto p-4 my-6 space-y-2 text-left">
-          <h2 className="text-2xl font-bold">Our Services</h2>
+        <div className="container mx-auto p-4 my-6 space-y-2 text-center">
+          <h2 className="text-2xl font-bold uppercase">Our Services</h2>
         </div>
         <div className="container mx-auto grid justify-center gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <div className="flex flex-col items-center p-4">
