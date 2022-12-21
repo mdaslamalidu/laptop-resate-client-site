@@ -16,7 +16,7 @@ const Categories = () => {
   }, []);
 
   return (
-    <div className="w-5/6 m-auto my-24">
+    <div className="border-y-2">
       <h2 className="text-2xl text-left font-bold py-12 ml-5">
         Browser by Categories
       </h2>
