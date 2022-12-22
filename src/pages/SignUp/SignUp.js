@@ -80,13 +80,13 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex justify-center items-center text-white">
-      <div className="w-96 p-7">
-        <h2 className="text-xl text-center">SignUp</h2>
+    <div className="flex justify-center items-center text-black">
+      <div className="w-96 p-7 mb-9 bg-black rounded">
+        <h2 className="text-xl text-center text-white">SignUp</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-control w-full my-2">
             <label className="label">
-              <span className="label-text">Name</span>
+              <span className="label-text text-white">Name</span>
             </label>{" "}
             <input
               className="input input-bordered w-full"
@@ -97,7 +97,7 @@ const SignUp = () => {
           </div>
           <div className="form-control w-full my-2">
             <label className="label">
-              <span className="label-text">Email</span>
+              <span className="label-text text-white">Email</span>
             </label>{" "}
             <input
               className="input input-bordered w-full"
@@ -108,7 +108,7 @@ const SignUp = () => {
           </div>
           <div className="form-control w-full my-2">
             <label className="label">
-              <span className="label-text">Password</span>
+              <span className="label-text text-white">Password</span>
             </label>{" "}
             <input
               className="input input-bordered w-full"
@@ -121,14 +121,14 @@ const SignUp = () => {
             <div class="flex">
               <div class="form-check form-check-inline mr-4">
                 <input
-                  class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                  className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                   type="radio"
                   name="radio"
                   id="inlineRadio1"
                   value="bayer"
                 />
                 <label
-                  class="form-check-label inline-block"
+                  className="form-check-label inline-block text-white"
                   for="inlineRadio10"
                 >
                   Bayer
@@ -136,14 +136,14 @@ const SignUp = () => {
               </div>
               <div class="form-check form-check-inline">
                 <input
-                  class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                  className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                   type="radio"
                   name="radio"
                   id="inlineRadio2"
                   value="seller"
                 />
                 <label
-                  class="form-check-label inline-block"
+                  className="form-check-label inline-block text-white"
                   for="inlineRadio20"
                 >
                   Saller
@@ -155,16 +155,16 @@ const SignUp = () => {
             {loading ? <SmallSpinner></SmallSpinner> : "Sign Up"}
           </button>
         </form>
-        <p>
+        <p className="text-white">
           Already Have an account?
-          <Link className="text-primary" to="/login">
+          <Link className="text-white" to="/login">
             Log In
           </Link>
         </p>
-        <div className="divider">OR</div>
+        <div className="divider text-white">OR</div>
         <button
           onClick={handleGoogleSignIn}
-          className="btn btn-outline w-full uppercase"
+          className="btn btn-outline w-full uppercase text-white"
         >
           continue with google
         </button>
