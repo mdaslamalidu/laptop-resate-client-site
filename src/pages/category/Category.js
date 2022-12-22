@@ -64,28 +64,17 @@ const Category = () => {
     <Loading></Loading>
   ) : (
     <div>
-      <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Pagination]}
-        className="mySwiper mb-8"
-      >
-        <div>
-          {category.map((singleCategory) => (
-            <SwiperSlide>
-              <SignleCategory
-                key={singleCategory._id}
-                singleCategory={singleCategory}
-                handleModalData={handleModalData}
-                handleReportItem={handleReportItem}
-              ></SignleCategory>
-            </SwiperSlide>
-          ))}
-        </div>
-      </Swiper>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center my-6">
+        {category.map((singleCategory) => (
+          <SignleCategory
+            key={singleCategory._id}
+            singleCategory={singleCategory}
+            handleModalData={handleModalData}
+            handleReportItem={handleReportItem}
+          ></SignleCategory>
+        ))}
+      </div>
+
       <div>
         {filteredData && (
           <CategoryModal

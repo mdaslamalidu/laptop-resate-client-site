@@ -24,7 +24,7 @@ const SignleCategory = ({
   const setDate = time.split(" ");
   return (
     <div>
-      <div className="card w-96 bg-base-100 shadow-xl text-black">
+      <div className="card w-96 m-auto bg-base-100 shadow-xl text-black mt-12">
         <figure className="h-[300px]">
           <img className="h-full" src={img} alt="laptop" />
         </figure>
