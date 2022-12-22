@@ -45,9 +45,9 @@ const Categories = () => {
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
             {categories.map((c) => (
               <SwiperSlide className="text-center shadow-lg rounded text-white">
-                <img className="w-full p-4 rounded-lg" src={c.img} alt="" />
-                <div className="flex justify-between p-4 items-center">
-                  <h2 className="pb-4 font-bold text-xl uppercase">
+                <img className="w-full p-2 rounded-lg" src={c.img} alt="" />
+                <div className="flex justify-between p-2 items-center">
+                  <h2 className="font-bold text-xl uppercase">
                     {c.category_name} Laptop
                   </h2>
                   <Link

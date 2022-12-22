@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container flex flex-col lg:flex-row pt-5">
         <ul className="self-center py-2 space-y-4 text-center sm:flex sm:space-y-0 sm:justify-around sm:space-x-4 lg:flex-1 lg:justify-start">
           <Link to="/">
-            <li className="text-3xl font-bold">Laptop Resal</li>
+            <li className="text-3xl font-bold">Laptop Resale</li>
           </Link>
         </ul>
         <div className="flex flex-col justify-center pt-6 lg:pt-0">
