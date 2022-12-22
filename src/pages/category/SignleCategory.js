@@ -24,9 +24,9 @@ const SignleCategory = ({
   const setDate = time.split(" ");
   return (
     <div>
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <figure>
-          <img className="h-[340px]" src={img} alt="Shoes" />
+      <div className="card w-96 bg-base-100 shadow-xl text-black">
+        <figure className="h-[300px]">
+          <img className="h-full" src={img} alt="laptop" />
         </figure>
         <div className="card-body">
           <div className="flex justify-between items-center gap-2">
@@ -51,19 +51,19 @@ const SignleCategory = ({
               Post: {setDate[1]} {setDate[2]}
             </h2>
           </div>
-          <p>{message}</p>
+          <p className="text-left">Desc: {message}</p>
           <div className="card-actions justify-end gap-3">
             <label
               onClick={() => handleReportItem(_id)}
               htmlFor="my-modal"
-              className="btn btn-primary"
+              className="btn btn-[#0D9488]"
             >
               Report
             </label>
             <label
               onClick={() => handleModalData(_id)}
               htmlFor="my-modal"
-              className="btn btn-primary"
+              className="btn btn-[#0D9488]"
               disabled={paid}
             >
               {paid ? "Already Booked" : "Book Now"}

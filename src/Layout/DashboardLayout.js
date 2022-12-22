@@ -25,12 +25,12 @@ const DashboardLayout = () => {
           type="checkbox"
           className="drawer-toggle"
         />
-        <div className="drawer-content">
+        <div className="drawer-content bg-white">
           <Outlet></Outlet>
         </div>
-        <div className="drawer-side ">
+        <div className="drawer-side bg-[#353C49] text-white">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-80 text-base-content bg-slate-200">
+          <ul className="menu py-4 w-80 text-white">
             {users?.role && (
               <>
                 {users?.role === "bayer" && (

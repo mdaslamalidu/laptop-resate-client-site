@@ -42,7 +42,7 @@ const Categories = () => {
           }}
           // pagination={true}
         >
-          <div>
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
             {categories.map((c) => (
               <SwiperSlide className="text-center shadow-lg rounded text-white">
                 <img className="w-full p-4 rounded-lg" src={c.img} alt="" />

@@ -34,23 +34,44 @@ const AllBayers = () => {
     getBayerData();
   }, []);
 
-  return (
-    <div>
-      <h3>All Bayers</h3>
-      {loading ? (
-        <Loading></Loading>
-      ) : (
-        <>
-          {bayers.map((bayer) => (
-            <AllBayer
-              key={bayer._id}
-              bayer={bayer}
-              handleDelete={handleDelete}
-            ></AllBayer>
-          ))}
-        </>
-      )}
-    </div>
+  return loading ? (
+    <Loading></Loading>
+  ) : (
+    <>
+      <div className="overflow-x-auto w-full text-black">
+        <table className="table w-full">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Button</th>
+            </tr>
+          </thead>
+          <tbody>
+            {bayers.map((bayer) => (
+              <tr>
+                <td>
+                  <div className="flex items-center space-x-3">
+                    <div>
+                      <div className="font-bold">{bayer.name}</div>
+                    </div>
+                  </div>
+                </td>
+                <td>{bayer.email}</td>
+                <th>
+                  <button
+                    onClick={() => handleDelete(bayer._id)}
+                    className="btn btn-sm btn-error text-white"
+                  >
+                    delete
+                  </button>
+                </th>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 };
 

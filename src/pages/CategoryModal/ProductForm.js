@@ -44,7 +44,7 @@ const ProductForm = ({ filteredData, setFilteredData }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="relative">
+      <form onSubmit={handleSubmit} className="relative text-black">
         <div className="flex flex-col lg:flex-row gap-3">
           <div className="form-control lg:w-1/2 my-2">
             <label className="label">
