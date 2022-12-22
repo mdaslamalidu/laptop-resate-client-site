@@ -74,13 +74,13 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center">
-      <div className="w-96 p-7">
-        <h2 className="text-xl text-center">Sign In</h2>
+    <div className="flex justify-center items-center text-black">
+      <div className="w-96 p-7 mb-8 bg-black rounded">
+        <h2 className="text-xl text-center text-white">Sign In</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-control w-full my-2">
             <label className="label">
-              <span className="label-text">Email</span>
+              <span className="label-text text-white">Email</span>
             </label>{" "}
             <input
               className="input input-bordered w-full"
@@ -91,7 +91,7 @@ const Login = () => {
           </div>
           <div className="form-control w-full my-2">
             <label className="label">
-              <span className="label-text">Password</span>
+              <span className="label-text text-white">Password</span>
             </label>{" "}
             <input
               className="input input-bordered w-full"
@@ -104,16 +104,16 @@ const Login = () => {
             {loading ? <SmallSpinner></SmallSpinner> : "Sing In"}
           </button>
         </form>
-        <p>
+        <p className="text-white">
           Are You new In This Site?
-          <Link className="text-primary" to="/signup">
+          <Link className="text-white" to="/signup">
             Sign Up
           </Link>
         </p>
-        <div className="divider">OR</div>
+        <div className="divider text-white">OR</div>
         <button
           onClick={handleGoogleSignIn}
-          className="btn btn-outline w-full uppercase"
+          className="btn btn-outline w-full uppercase text-white"
         >
           continue with google
         </button>
