@@ -46,7 +46,45 @@ const ReportItems = () => {
   };
 
   return (
-    <div>
+    <div className="overflow-x-auto w-full text-black">
+      <table className="table w-full">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Selling Price</th>
+            <th>Button</th>
+          </tr>
+        </thead>
+        <tbody>
+          {reportItems.map((reportItem) => (
+            <tr>
+              <th>
+                <div className="flex items-center space-x-3">
+                  <div className="avatar">
+                    <div className="mask mask-squircle w-12 h-12">
+                      <img src={reportItem.img} alt="product" />
+                    </div>
+                  </div>
+                </div>
+              </th>
+              <td>{reportItem.name}</td>
+              <td>{reportItem.email}</td>
+              <td>{reportItem.selling_price}</td>
+              <th>
+                <button
+                  onClick={() => handleDelete(reportItem.reportId)}
+                  className="btn btn-sm btn-error"
+                >
+                  Delete
+                </button>
+              </th>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {/* <div>
       <h3>Customer Report Items {reportItems.length}</h3>
       {reportItems.map((reportItem) => (
         <ReportedItem
@@ -55,6 +93,7 @@ const ReportItems = () => {
           handleDelete={handleDelete}
         ></ReportedItem>
       ))}
+    </div> */}
     </div>
   );
 };

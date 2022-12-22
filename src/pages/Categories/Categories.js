@@ -23,7 +23,7 @@ const Categories = () => {
   }, []);
 
   return (
-    <div className="border-y-2">
+    <div className="border-y-2" id="category">
       <h2 className="text-2xl text-center font-bold py-12 ml-5 uppercase">
         Browser by Categories
       </h2>

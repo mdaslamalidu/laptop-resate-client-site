@@ -76,7 +76,7 @@ const AddProduct = () => {
   }, [user?.email]);
 
   return (
-    <div className="my-8">
+    <div className="my-8 text-black">
       <h3 className="text-xl font-bold text-center">Add Products</h3>
       <div className="w-full md:w-1/2 mx-auto bg-slate-400 p-5 rounded">
         <form onSubmit={handleSubmit}>
@@ -134,7 +134,7 @@ const AddProduct = () => {
               <input
                 className="input input-bordered w-full"
                 name="sellingPrice"
-                type="text"
+                type="number"
                 placeholder="name"
               />
             </div>
@@ -145,7 +145,7 @@ const AddProduct = () => {
               <input
                 className="input input-bordered w-full"
                 name="bayingPrice"
-                type="text"
+                type="number"
                 placeholder="name"
               />
             </div>
