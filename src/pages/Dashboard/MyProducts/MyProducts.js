@@ -30,11 +30,17 @@ const MyProducts = () => {
   }, [user?.email]);
   return (
     <div>
-      <h3 className="text-xl font-bold text-center">This is My Products</h3>
       {loading ? (
         <Loading></Loading>
+      ) : products.length === 0 ? (
+        <h1 className="text-black text-center text-4xl font-bold">
+          You have no Product
+        </h1>
       ) : (
         <>
+          <h3 className="text-xl font-bold text-center text-black">
+            This is My Products
+          </h3>
           {products.map((product) => (
             <MyProduct key={product._id} product={product}></MyProduct>
           ))}
