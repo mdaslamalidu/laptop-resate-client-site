@@ -39,7 +39,7 @@ const Navbar = () => {
     </React.Fragment>
   );
   return (
-    <div className="navbar flex justify-between bg-transparent text-white py-5">
+    <div className="navbar flex justify-between bg-transparent text-white py-5 bg-[#163A9B]">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-primary lg:hidden">

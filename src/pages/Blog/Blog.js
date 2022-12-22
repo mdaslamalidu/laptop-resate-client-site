@@ -2,8 +2,10 @@ import React from "react";
 
 const Blog = () => {
   return (
-    <div>
-      <h3 className="text-center my-5 text-3xl font-bold">Blog page</h3>
+    <div className="text-black">
+      <h3 className="text-center my-5 text-3xl font-bold text-white">
+        Blog page
+      </h3>
       <div className="m-4 border-2 rounded p-4 bg-slate-200 ">
         <h2 className="text-2xl my-2 font-bold">
           What are the different ways to manage a state in a React application?
