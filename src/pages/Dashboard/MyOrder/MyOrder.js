@@ -22,17 +22,29 @@ const MyOrder = () => {
     },
   });
 
-  if (isLoading) {
-    return <Loading></Loading>;
-  }
+  // if (isLoading) {
+  //   return <Loading></Loading>;
+  // }
 
-  return (
+  return isLoading ? (
+    <Loading></Loading>
+  ) : (
     <div>
-      <h3>My Order</h3>
-      {orders.length > 0 &&
-        orders.map((order) => (
-          <MyOrders kay={order._id} order={order}></MyOrders>
-        ))}
+      {orders.length === 0 ? (
+        <h2 className="text-4xl font-bold text-center text-black">
+          Your have no order
+        </h2>
+      ) : (
+        <>
+          <h1 className="text-4xl font-bold text-center text-black">
+            My Order
+          </h1>
+          {orders.length > 0 &&
+            orders.map((order) => (
+              <MyOrders kay={order._id} order={order}></MyOrders>
+            ))}
+        </>
+      )}
     </div>
   );
 };

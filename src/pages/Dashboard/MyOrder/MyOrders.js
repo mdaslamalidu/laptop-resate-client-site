@@ -12,8 +12,8 @@ const MyOrders = ({ order }) => {
             <img src={img} alt="" />
           </div>
         </div>
-        <p>Price: ${categoryPrice}</p>
-        <p>Product: {categoryName}</p>
+        <p className="text-black">Price: ${categoryPrice}</p>
+        <p className="text-black">Product: {categoryName}</p>
         {categoryPrice && !paid && (
           <Link to={`/dashboard/payment/${_id}`}>
             <button className="btn-sm btn-primary mt-2 rounded">pay</button>
